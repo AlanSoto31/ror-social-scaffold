@@ -81,5 +81,3 @@ test:
 production:
   <<: *default
   database: ror_social_scaffold_production
-  username: janis
-  password: janis483
