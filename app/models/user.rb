@@ -14,12 +14,14 @@ class User < ApplicationRecord
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
   
   has_many :accepted_friendships, -> { where(status: true) } , class_name: 'Friendship'
-  has_many :friends, through: :accepted_friendships
-  has_many :rejected_friendships, -> { where(status: false) } , class_name: 'Friendship'
-
+  #has_many :friends, through: :accepted_friendships, foreign_key: 'friend_id'
+  has_many :pending_friendships, -> { where(status: false) } , class_name: 'Friendship'
+  
   def friends
-    friends_array = friendships.map { |friendship| friendship.friend if friendship.status }
-    friends_array.compact
+     
   end
 
+  def pending_friends
+    
+  end
 end

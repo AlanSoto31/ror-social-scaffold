@@ -3,5 +3,8 @@
   <ul class="users-list">
     <%= render @users%>
   </ul>
-  <%= current_user.friends%>
+
+   <% current_user.friendspe.each do |user| %>
+      <%= link_to user.name, user_path(user.id)  %>
+    <% end %>
 </section>
