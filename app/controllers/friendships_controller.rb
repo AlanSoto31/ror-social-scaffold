@@ -3,6 +3,7 @@ class FriendshipsController < ApplicationController
     
     def index
       @friendships = Friendship.all
+      @pending_friendships = Friendship.pending_friendships
     end
   
     def create
