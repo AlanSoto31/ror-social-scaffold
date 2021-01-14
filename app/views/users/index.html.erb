@@ -10,7 +10,8 @@
     <ul class="users-list">
     <% @f_id = f.id%>
     <% accept_invitation %>
-    <%= @users.find_by_id(f.user_id).name %>  <%=@accept%>
+    <% reject_invitation %>
+    <%= @users.find_by_id(f.user_id).name %>  <%=@accept%> <%=@reject%>
      </ul>
    <% end %> 
 </section>

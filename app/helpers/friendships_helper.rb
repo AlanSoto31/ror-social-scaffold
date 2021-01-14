@@ -12,6 +12,10 @@ module FriendshipsHelper
     @accept = link_to 'Accept', friendship_path(id: @f_id, status: true), method: :put, class: 'btn btn-success'
   end
 
+  def reject_invitation
+    @reject = link_to 'Reject', friendship_path(id: @f_id), method: :delete, class: 'btn btn-success'
+  end
+
   def recieved_friendships
     @recieved_friendships = Friendship.where(friend_id: current_user.id, status: false)
   end

@@ -26,5 +26,11 @@ class FriendshipsController < ApplicationController
           render 'edit'
         end
     end
+
+    def destroy
+      @friendship = Friendship.find(params[:id])
+      @friendship.destroy
+      redirect_to users_path
+    end
         
 end
