@@ -16,4 +16,15 @@ class FriendshipsController < ApplicationController
         render 'new'
       end
     end
+
+    def update
+      @friendship = Friendship.find(params[:id])
+
+        if @friendship.update_attributes(friendship_params)
+          redirect_to users_path
+        else
+          render 'edit'
+        end
+    end
+        
 end

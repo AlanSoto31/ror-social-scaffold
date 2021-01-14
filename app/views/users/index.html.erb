@@ -6,9 +6,11 @@
 
   <h2>Friend Requests:</h2>
    <% recieved_friendships%>
-   <% @recieved_friendships.each do |r| %>
+   <% @recieved_friendships.each do |f| %>
     <ul class="users-list">
-    <%= @users.find_by_id(r.user_id).name %> 
+    <% @f_id = f.id%>
+    <% accept_invitation %>
+    <%= @users.find_by_id(f.user_id).name %>  <%=@accept%>
      </ul>
    <% end %> 
 </section>
