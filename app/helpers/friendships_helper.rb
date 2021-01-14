@@ -5,7 +5,7 @@ module FriendshipsHelper
   end
 
   def send_invitation 
-    @invite = link_to 'Add friend', friendships_path(friend_id: @user.id, user_id: current_user.id, status: false), method: :post, class: 'btn btn-success'
+    @invite = link_to 'Add friend', friendships_path(friend_id: @u_id, user_id: current_user.id, status: false), method: :post, class: 'btn btn-success'
   end
 
   def accept_invitation
@@ -19,4 +19,5 @@ module FriendshipsHelper
   def recieved_friendships
     @recieved_friendships = Friendship.where(friend_id: current_user.id, status: false)
   end
+
 end

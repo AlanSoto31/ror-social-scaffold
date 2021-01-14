@@ -14,8 +14,6 @@ class User < ApplicationRecord
   
   
   has_many :accepted_friendships, -> { where(status: true) } , class_name: 'Friendship'
-  #has_many :friends, through: :accepted_friendships, foreign_key: 'friend_id'
   has_many :pending_friendships, -> { where(status: false) } , class_name: 'Friendship'
-  
   
 end

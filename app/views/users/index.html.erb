@@ -1,8 +1,15 @@
 <section class="users-section">
-
+ <% @users.each do |u| %>
   <ul class="users-list">
-    <%= render @users%>
+    <%= u.name %> 
+    <% @u_id = u.id%>
+    <% send_invitation %>
+    <% if !current_user.friendships.find_by(friend_id: u.id) && current_user.id != u.id && !u.friendships.find_by(friend_id: current_user.id)%>
+      
+      <%= @invite %>
+    <% end %>
   </ul>
+  <% end %>
 
   <h2>Friend Requests:</h2>
    <% recieved_friendships%>
