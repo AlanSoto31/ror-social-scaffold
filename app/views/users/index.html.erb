@@ -4,7 +4,11 @@
     <%= render @users%>
   </ul>
 
-   <% current_user.friendspe.each do |user| %>
-      <%= link_to user.name, user_path(user.id)  %>
-    <% end %>
+  <h2>Friend Requests:</h2>
+   <% recieved_friendships%>
+   <% @recieved_friendships.each do |r| %>
+    <ul class="users-list">
+    <%= @users.find_by_id(r.user_id).name %> 
+     </ul>
+   <% end %> 
 </section>
