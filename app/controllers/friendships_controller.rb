@@ -22,7 +22,7 @@ class FriendshipsController < ApplicationController
         if @friendship.update_attributes(friendship_params)
           redirect_to users_path
         else
-          render 'edit'
+          redirect_to users_path
         end
     end
 
