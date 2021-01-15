@@ -1,12 +1,10 @@
-module FriendshipsHelper
+# rubocop:disable Layout/LineLength, Style/GuardClause
 
+module FriendshipsHelper
   def friendship_params
-    params.permit(:friend_id, :user_id, :status)  
+    params.permit(:friend_id, :user_id, :status)
   end
-  
-  # para imprimir el boton 'Add-friend' se tienen que cumplir:
-    # 1.- Que no te puedas invitar a ti mismo
-    # 2.- Que la invitacion no exista de ambos lados  
+
   def disappear_invite(usa_id, usa)
     @invite = nil
     if usa_id != current_user.id && !current_user.friendships.find_by(friend_id: usa_id) && !usa.friendships.find_by(friend_id: current_user.id)
@@ -24,9 +22,8 @@ module FriendshipsHelper
   end
 
   def cu_name
-    if current_user
-      @cu_name = current_user.name
-    end
+    @cu_name = current_user.name if current_user
   end
-
 end
+
+# rubocop:enable Layout/LineLength, Style/GuardClause

@@ -11,9 +11,7 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
 
   has_many :friendships
-  
-  
-  has_many :accepted_friendships, -> { where(status: true) } , class_name: 'Friendship'
-  has_many :pending_friendships, -> { where(status: false) } , class_name: 'Friendship'
-  
+
+  has_many :accepted_friendships, -> { where(status: true) }, class_name: 'Friendship'
+  has_many :pending_friendships, -> { where(status: false) }, class_name: 'Friendship'
 end
