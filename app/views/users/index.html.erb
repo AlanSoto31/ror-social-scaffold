@@ -1,13 +1,12 @@
 <section class="users-section">
+
+
  <% @users.each do |u| %>
-  <ul class="users-list">
+  <ul class="users-list"> 
+    <%= u.id %> 
     <%= u.name %> 
-    <% @u_id = u.id%>
-    <% send_invitation %>
-    <% if !current_user.friendships.find_by(friend_id: u.id) && current_user.id != u.id && !u.friendships.find_by(friend_id: current_user.id)%>
-      
-      <%= @invite %>
-    <% end %>
+    <% disappear_invite(u.id, u) %>
+    <%= @invite %>
   </ul>
   <% end %>
 
@@ -15,9 +14,7 @@
    <% recieved_friendships%>
    <% @recieved_friendships.each do |f| %>
     <ul class="users-list">
-    <% @f_id = f.id%>
-    <% accept_invitation %>
-    <% reject_invitation %>
+    <% answer_invitation(f.id) %>
     <%= @users.find_by_id(f.user_id).name %>  <%=@accept%> <%=@reject%>
      </ul>
    <% end %> 
