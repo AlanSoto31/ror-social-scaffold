@@ -7,8 +7,6 @@ RSpec.describe Post, type: :model do
   end
 
   it 'only log-in users are able to create a post' do
-    user = User.create(name: 'jeny', email: 'jenny@jenny.com', password: 'acambaro')
     expect(Post.create(content: 'Post description')).not_to be_valid
   end
-
 end
