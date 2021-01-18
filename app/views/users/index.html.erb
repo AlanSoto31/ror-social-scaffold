@@ -1,21 +1,22 @@
 <section class="users-section">
-
-
- <% @users.each do |u| %>
-  <ul class="users-list"> 
-    <%= u.id %> 
-    <%= u.name %> 
-    <% disappear_invite(u.id, u) %>
-    <%= @invite %>
+<h2>All Users:</h2>
+<ul class="users-list"> 
+  <% @users.each do |u| %>
+      <li id= <%="user_#{u.name}"%> >
+        <%= u.id %> 
+        <%= u.name %> 
+        <% disappear_invite(u.id, u) %>
+        <%= @invite %>
+        </li>
+    <% end %>
   </ul>
-  <% end %>
 
   <h2>Friend Requests:</h2>
    <% recieved_friendships%>
-   <% @recieved_friendships.each do |f| %>
-    <ul class="users-list">
-    <% answer_invitation(f.id) %>
-    <%= @users.find_by_id(f.user_id).name %>  <%=@accept%> <%=@reject%>
-     </ul>
-   <% end %> 
+  <ul class="users-list"> 
+    <% @recieved_friendships.each do |f| %>
+      <% answer_invitation(f.id) %>
+      <li id="friend_requests"><%= @users.find_by_id(f.user_id).name %>  <%=@accept%> <%=@reject%></li>
+    <% end %> 
+  </ul>
 </section>
