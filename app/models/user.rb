@@ -17,8 +17,6 @@ class User < ApplicationRecord
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
 
   def friends
-    friends_i_send_invite = Friendship.where(user_id: id, status: true).pluck(:friend_id)
-    friends_i_got_invite = Friendship.where(friend_id: id, status: true).pluck(:user_id)
-    friends_i_send_invite + friends_i_got_invite
+    Friendship.where(user_id: id, status: true).pluck(:friend_id)
   end
 end
