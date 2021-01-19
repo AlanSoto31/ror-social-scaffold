@@ -21,6 +21,7 @@ class FriendshipsController < ApplicationController
     @friendship = Friendship.find(params[:id])
 
     if @friendship.update_attributes(friendship_params)
+       Friendship.create(user_id: @friendship.friend_id, friend_id: @friendship.user_id , status: true)
       redirect_to users_path
     else
       redirect_to users_path
