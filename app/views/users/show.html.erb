@@ -1,6 +1,13 @@
 <section class="user-section">
   <%disappear_invite(@user.id, @user)%>
-  <h2><%= "Name: #{@user.name}"%></h2>
+  <h2><%= "#{@user.name}"%></h2>
+
+  <h3>My friends:</h3>
+  <ul>
+    <%@user.list_friends.each do |l|%>
+      <li><%=l.name%></li>
+    <%end%>
+  </u>
   <%=@invite%>
   <article class="timeline">
     <h3>Recent posts:</h3>

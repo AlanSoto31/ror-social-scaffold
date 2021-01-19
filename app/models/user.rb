@@ -19,4 +19,9 @@ class User < ApplicationRecord
   def friends
     Friendship.where(user_id: id, status: true).pluck(:friend_id)
   end
+
+  def list_friends
+    ids = Friendship.where(user_id: id, status: true).pluck(:friend_id)
+    User.where(id: ids)
+  end
 end
