@@ -4,11 +4,15 @@
   <% @users.each do |u| %>
       <li id= <%="user_#{u.name}"%> >
         <%= u.id %> 
-        <%= u.name %> 
+        <%= u.name %>
+        <span class="profile-link">
+        <%= link_to 'See Profile',  user_path(u), class: 'profile-link' %>
+        </span>
         <% disappear_invite(u.id, u) %>
         <%= @invite %>
         </li>
     <% end %>
+    
   </ul>
 
   <h2>Friend Requests:</h2>

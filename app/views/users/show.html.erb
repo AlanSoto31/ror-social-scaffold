@@ -1,5 +1,5 @@
 <section class="user-section">
-<%send_invitation%>
+  <%disappear_invite(@user.id, @user)%>
   <h2><%= "Name: #{@user.name}"%></h2>
   <%=@invite%>
   <article class="timeline">

@@ -14,11 +14,11 @@ class User < ApplicationRecord
 
   has_many :accepted_friendships, -> { where(status: true) }, class_name: 'Friendship'
   has_many :pending_friendships, -> { where(status: false) }, class_name: 'Friendship'
+  has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
 
   def friends
-    friends_i_send_invite= Friendship.where(user_id: id, status: true).pluck(:friend_id)
-    friends_i_got_invite= Friendship.where(friend_id: id, status: true).pluck(:user_id)
-    ids=friends_i_send_invite + friends_i_got_invite
-    User.where(id: ids)
+    friends_i_send_invite = Friendship.where(user_id: id, status: true).pluck(:friend_id)
+    friends_i_got_invite = Friendship.where(friend_id: id, status: true).pluck(:user_id)
+    friends_i_send_invite + friends_i_got_invite
   end
 end
