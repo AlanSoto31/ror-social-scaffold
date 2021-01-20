@@ -20,7 +20,7 @@
   <ul class="users-list"> 
     <% @recieved_friendships.each do |f| %>
       <% answer_invitation(f.id) %>
-      <li id="friend_requests"><%= @users.find_by_id(f.user_id).name %>  <%=@accept%> <%=@reject%></li>
+      <li class="friend_requests"><%= @users.find_by_id(f.user_id).name %>  <%=@accept%> <%=@reject%></li>
     <% end %> 
   </ul>
 </section>
