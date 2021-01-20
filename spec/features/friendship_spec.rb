@@ -18,7 +18,7 @@ describe 'Friendship', type: :feature do
     fill_in 'user_password', with: 'acambaro'
     find("input[type='submit']").click
     visit '/users'
-    section = find_by_id('friend_requests')
+    section = find(class: 'friend_requests')
     expect(section).to have_text('alan')
   end
 
