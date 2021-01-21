@@ -1,5 +1,27 @@
 <section class="users-section">
-  <ul class="users-list">
-    <%= render @users %>
+<h2>All Users:</h2>
+<ul class="users-list"> 
+  <% @users.each do |u| %>
+      <li id= <%="user_#{u.name}"%> >
+        <span><%=image_tag(u.avatar)%></span>
+        <span class="px-2 mx-2"><%= u.name %></span>
+        <span class="profile-link px-2">
+        <%= link_to 'See Profile',  user_path(u), class: 'btn btn-success ' %>
+        </span>
+        <% disappear_invite(u.id, u) %>
+        <%= @invite %>
+        </li>
+    <% end %>
+  </ul>
+
+  <h2>Friend Requests:</h2>
+   <% recieved_friendships%>
+  <ul class="users-list"> 
+    <% @recieved_friendships.each do |f| %>
+      <% answer_invitation(f.id) %>
+      <li class="friend_requests"><%= @users.find_by_id(f.user_id).name %><span class="profile-link px-2">
+        <%= link_to 'See Profile', user_path(f), class: 'btn btn-success'%>
+        </span><%=@accept%> <%=@reject%></li>
+    <% end %> 
   </ul>
 </section>
