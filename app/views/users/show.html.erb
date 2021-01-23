@@ -5,10 +5,12 @@
   <h3>My friends:</h3>
   <ul>
     <%@user.list_friends.each do |l|%>
-      <li><%=l.name%>
-        <span class="profile-link px-2">
+      <li class="p-2"><%=l.name%>
+        <span class="profile-link p-2">
         <%= link_to 'See Profile',  user_path(l), class: 'btn btn-success'%>
-        </span><%=@invite%></li>
+        </span>
+        <span class="p-2"><%=@invite%></span>
+      </li>
     <%end%>
   </u>
   
